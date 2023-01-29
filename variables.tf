@@ -40,3 +40,20 @@ variable "gs-location" {
 variable "gs-storage-class" {
   type = string
 }
+# ------------cluster
+
+variable "cluster_name" {
+  type = string
+  description = "cluster_name"
+}
+
+variable "cluster_location" {
+  type = string
+  description = "cluster location"
+}
+
+variable "authorized_ipv4_cidr_block" {
+  type = string
+  description = "The CIDR block where HTTPS access is allowed from"
+  default = null
+}

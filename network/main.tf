@@ -6,20 +6,20 @@ resource "google_compute_network" "main" {
 }
 
 resource "google_compute_subnetwork" "private-subnet" {
-  name                     = var.network_name
+  name                     = var.subnet_name
   ip_cidr_range            = var.subnet_cidr
   region                   = var.region
   network                  = google_compute_network.main.id
   private_ip_google_access = true
 
-#   secondary_ip_range {
-#     range_name    = "k8s-pod-range"
-#     ip_cidr_range = "10.48.0.0/14"
-#   }
-#   secondary_ip_range {
-#     range_name    = "k8s-service-range"
-#     ip_cidr_range = "10.52.0.0/20"
-#   }
+  secondary_ip_range {
+    range_name    = "k8s-pod-range"
+    ip_cidr_range = "10.48.0.0/14"
+  }
+  secondary_ip_range {
+    range_name    = "k8s-service-range"
+    ip_cidr_range = "10.52.0.0/20"
+  }
 }
 
 resource "google_compute_firewall" "allow-ssh" {

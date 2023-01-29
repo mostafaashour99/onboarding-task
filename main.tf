@@ -24,3 +24,12 @@ module "gs" {
     gs-storage-class = var.gs-storage-class
     gs-location = var.gs-location
 }
+
+module "gke" {
+  source = "./gke"
+  cluster_name = var.cluster_name
+  cluster_location = var.cluster_location
+  network_name = var.vpc_name
+  subnet_name = var.subnet_name
+  authorized_ipv4_cidr_block = var.subnet_cidr
+}
