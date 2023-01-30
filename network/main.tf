@@ -1,8 +1,7 @@
 resource "google_compute_network" "main" {
   name                            =  var.network_name
-  routing_mode                    = "GLOBAL"
   auto_create_subnetworks         = false
-  #delete_default_routes_on_create = true
+
 }
 
 resource "google_compute_subnetwork" "private-subnet" {
@@ -34,9 +33,3 @@ resource "google_compute_firewall" "allow-ssh" {
   source_ranges = ["35.235.240.0/20"]
 }
 
-# resource "google_compute_route" "egress_internet" {
-#   name             = "egress-internet"
-#   dest_range       = "0.0.0.0/0"
-#   network          = google_compute_network.main.name
-#   next_hop_gateway = "default-internet-gateway"
-# }
