@@ -32,4 +32,5 @@ module "gke" {
   network_name = var.vpc_name
   subnet_name = var.subnet_name
   authorized_ipv4_cidr_block = var.subnet_cidr
+  node_type = var.node_type
 }

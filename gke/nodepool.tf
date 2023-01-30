@@ -12,7 +12,7 @@ resource "google_project_iam_binding" "admin-account-iam" {
 resource "google_container_node_pool" "general" {
   name       = "general"
   cluster    = google_container_cluster.primary.name
-  node_count = 3
+  node_count = 4
   location       = google_container_cluster.primary.location
 
   management {
@@ -32,7 +32,8 @@ resource "google_container_node_pool" "general" {
   
   node_config {
     preemptible  = true
-    disk_size_gb = 10
+    machine_type = var.node_type
+    disk_size_gb = 100
 
     labels = {
       role = "general"

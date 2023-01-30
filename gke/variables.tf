@@ -26,3 +26,6 @@ variable "authorized_ipv4_cidr_block" {
   description = "The CIDR block where HTTPS access is allowed from"
   default = null
 }
+variable "node_type" {
+  type = string
+}

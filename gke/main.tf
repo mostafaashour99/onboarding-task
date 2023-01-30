@@ -1,6 +1,7 @@
 resource "google_container_cluster" "primary" {
   name                     = var.cluster_name
   location                 = var.cluster_location
+  #node_locations = [ "value" ]
   remove_default_node_pool = true
   initial_node_count       = 1
   network                  = var.network_name
@@ -15,6 +16,9 @@ resource "google_container_cluster" "primary" {
     horizontal_pod_autoscaling {
       disabled = false
     }
+    # autoscaling{
+    #   disabled =true
+    # }
   }
 
   workload_identity_config {
