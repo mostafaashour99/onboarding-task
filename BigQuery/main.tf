@@ -5,9 +5,9 @@ resource "google_bigquery_dataset" "dataset" {
   location                    = "US"
   default_table_expiration_ms = 3600000
 
-  labels = {
-    env = "default"
-  }
+  # labels = {
+  #   env = "default"
+  # }
   # access {
   #   role          = "OWNER"
   #   user_by_email = google_service_account.bqowner.email
