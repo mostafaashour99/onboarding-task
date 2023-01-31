@@ -34,3 +34,9 @@ module "gke" {
   authorized_ipv4_cidr_block = var.subnet_cidr
   node_type = var.node_type
 }
+
+module "bigquery" {
+  source = "./BigQuery"
+  dataset_name = var.dataset_name
+  
+}
