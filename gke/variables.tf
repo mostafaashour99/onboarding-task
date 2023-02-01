@@ -33,3 +33,7 @@ variable "authorized_ipv4_cidr_block" {
 variable "node_type" {
   type = string
 }
+
+variable "node_locations" {
+  type = list
+}

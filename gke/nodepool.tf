@@ -12,10 +12,7 @@ resource "google_container_node_pool" "general" {
   cluster    = google_container_cluster.primary.name
   node_count = 2
   # location       = google_container_cluster.primary.location
-  node_locations = [
-    "us-central1-c",
-    "us-central1-f"
-  ]
+  node_locations = var.node_locations
 
   management {
     auto_repair  = true
