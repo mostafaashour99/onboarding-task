@@ -22,7 +22,7 @@ resource "google_container_cluster" "primary" {
   }
 
   workload_identity_config {
-    workload_pool = "expanded-run-375112.svc.id.goog"
+    workload_pool = format("%s.svc.id.goog",var.project_id)
   }
 
   ip_allocation_policy {
