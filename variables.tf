@@ -32,12 +32,19 @@ variable "os-image" {
 variable "vm-zone" {
     type = string
 }
+variable "bastion-sa_id" {
+  type = string
+}
 
 
 # -------------buckets--------
 variable "gs-name" {
+  type = list
+}
+variable "buckets-sa-id" {
   type = string
 }
+
 variable "gs-location" {
   type = string
 }

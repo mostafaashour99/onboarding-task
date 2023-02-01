@@ -1,5 +1,5 @@
-resource "google_service_account" "default"{
-  account_id   = "expanded-run-375112"
+resource "google_service_account" "bastion-sa"{
+  account_id   = var.bastion-sa_id
   display_name = "Service Account"
 }
 
@@ -21,7 +21,7 @@ resource "google_compute_instance" "bastion" {
 
   service_account {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    email  = google_service_account.default.email
+    email  = google_service_account.bastion-sa.email
     scopes = ["cloud-platform"]
   }
 }

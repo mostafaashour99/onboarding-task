@@ -1,9 +1,11 @@
 variable "project_id" {
   type = string
 }
-
-variable "gs-name" {
+variable "buckets-sa-id" {
   type = string
+}
+variable "gs-name" {
+  type = list
 }
 variable "gs-location" {
   type = string

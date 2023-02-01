@@ -10,9 +10,11 @@ vm-name = "app-cluster"
 vm-type = "e2-medium"
 os-image = "debian-cloud/debian-11"
 vm-zone = "us-central1-a"
+bastion-sa_id ="bastion-sa"
 
 # bucket
-gs-name = "expanded-run-375112-g1"
+buckets-sa-id = "buckets"
+gs-name = ["example-task-multiple-buckets-b1","example-task-multiple-buckets-b2","example-task-multiple-buckets-b3"]
 gs-storage-class = "STANDARD"
 gs-location = "US"
 
@@ -23,4 +25,4 @@ node_type = "e2-standard-2"
 node_locations = ["us-central1-c","us-central1-f"]
 
 # -------- bigquery
-dataset_name = "test"
+dataset_name = "data_set1"

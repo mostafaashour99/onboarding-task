@@ -16,3 +16,6 @@ variable "network_name" {
 variable "subnet_name" {
     type = string  
 }
+variable "bastion-sa_id" {
+  type = string
+}

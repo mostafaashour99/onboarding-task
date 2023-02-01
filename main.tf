@@ -17,26 +17,28 @@ module "vm" {
     vm-zone = var.vm-zone
     network_name = module.networks.network.name
     subnet_name = module.networks.private-subnet.name
+    bastion-sa_id = var.bastion-sa_id 
 }
 module "gs" {
     source = "./buckets"
     project_id = var.project
+    buckets-sa-id = var.buckets-sa-id
     gs-name = var.gs-name
     gs-storage-class = var.gs-storage-class
     gs-location = var.gs-location
 }
 
-module "gke" {
-  source = "./gke"
-  project_id = var.project
-  cluster_name = var.cluster_name
-  cluster_location = var.cluster_location
-  network_name = var.vpc_name
-  subnet_name = var.subnet_name
-  authorized_ipv4_cidr_block = var.subnet_cidr
-  node_type = var.node_type
-  node_locations = var.node_locations
-}
+# module "gke" {
+#   source = "./gke"
+#   project_id = var.project
+#   cluster_name = var.cluster_name
+#   cluster_location = var.cluster_location
+#   network_name = var.vpc_name
+#   subnet_name = var.subnet_name
+#   authorized_ipv4_cidr_block = var.subnet_cidr
+#   node_type = var.node_type
+#   node_locations = var.node_locations
+# }
 
 module "bigquery" {
   source = "./BigQuery"

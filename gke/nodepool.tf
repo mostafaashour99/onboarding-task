@@ -11,8 +11,9 @@ resource "google_container_node_pool" "general" {
   name       = "general"
   cluster    = google_container_cluster.primary.name
   node_count = 2
-  # location       = google_container_cluster.primary.location
-  node_locations = var.node_locations
+  location = google_container_cluster.primary.location
+  # node_locations = var.node_locations
+  node_locations = ["us-central1-a","us-central1-f"]
 
   management {
     auto_repair  = true
@@ -34,45 +35,9 @@ resource "google_container_node_pool" "general" {
     machine_type = var.node_type
     disk_size_gb = 100
 
-    labels = {
-      role = "general"
-    }
-
     service_account = google_service_account.kubernetes.email
     oauth_scopes = [
-      "https://www.googleapis.com/auth/devstorage.read_only",
-      "https://www.googleapis.com/auth/logging.write",
-      "https://www.googleapis.com/auth/monitoring",
-      "https://www.googleapis.com/auth/servicecontrol",
-      "https://www.googleapis.com/auth/service.management.readonly",
-      "https://www.googleapis.com/auth/trace.append",
+      "https://www.googleapis.com/auth/cloud-platform"
     ]
   }
 }
-
-# resource "google_container_node_pool" "spot" {
-#   name    = "spot"
-#   cluster = google_container_cluster.primary.id
-
-#   management {
-#     auto_repair  = true
-#     auto_upgrade = true
-#   }
-
-#   autoscaling {
-#     min_node_count = 0
-#     max_node_count = 10
-#   }
-
-#   node_config {
-#     preemptible  = true
-#     machine_type = "e2-small"
-
-
-
-#     service_account = google_service_account.kubernetes.email
-#     oauth_scopes = [
-#       "https://www.googleapis.com/auth/cloud-platform"
-#     ]
-#   }
-# }
