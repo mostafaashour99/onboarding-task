@@ -2,12 +2,10 @@ resource "google_service_account" "buckets" {
   account_id = "buckets"
 }
 
-resource "google_project_iam_binding" "buckets-iam" {
-  project = "expanded-run-375112"
+resource "google_project_iam_member" "buckets-iam" {
+  project = var.project_id
   role    = "roles/storage.objectViewer"
-  members = [
-    "serviceAccount:${google_service_account.buckets.email}",
-  ]
+  member = "serviceAccount:${google_service_account.buckets.email}"
 }
 
 resource "google_storage_bucket" "gs" {

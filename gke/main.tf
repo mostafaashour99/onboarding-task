@@ -1,7 +1,10 @@
 resource "google_container_cluster" "primary" {
   name                     = var.cluster_name
   location                 = var.cluster_location
-  #node_locations = [ "value" ]
+  # node_locations = [
+    # "us-central1-c",
+    # "us-central1-f"
+  # ]
   remove_default_node_pool = true
   initial_node_count       = 1
   network                  = var.network_name

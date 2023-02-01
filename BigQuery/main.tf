@@ -28,10 +28,8 @@ resource "google_service_account" "bqwriter" {
   account_id = "bqwriter"
 }
 
-resource "google_project_iam_binding" "bqwriter-iam" {
-  project = "expanded-run-375112"
+resource "google_project_iam_member" "bqwriter-iam" {
+  project = var.project_id
   role    = "roles/bigquery.dataEditor"
-  members = [
-    "serviceAccount:${google_service_account.bqwriter.email}",
-  ]
+  member = "serviceAccount:${google_service_account.bqwriter.email}"
 }

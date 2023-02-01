@@ -20,6 +20,7 @@ module "vm" {
 }
 module "gs" {
     source = "./buckets"
+    project_id = var.project
     gs-name = var.gs-name
     gs-storage-class = var.gs-storage-class
     gs-location = var.gs-location
@@ -27,6 +28,7 @@ module "gs" {
 
 module "gke" {
   source = "./gke"
+  project_id = var.project
   cluster_name = var.cluster_name
   cluster_location = var.cluster_location
   network_name = var.vpc_name
@@ -37,6 +39,7 @@ module "gke" {
 
 module "bigquery" {
   source = "./BigQuery"
+  project_id = var.project
   dataset_name = var.dataset_name
   
 }
