@@ -9,10 +9,10 @@ resource "google_project_iam_member" "buckets-iam" {
 }
 
 resource "google_storage_bucket" "gs" {
- # name          = var.gs-name
-  location      = var.gs-location
-  storage_class = var.gs-storage-class
+ 
   for_each = toset(var.gs-name)
   name = each.value
+  location      = var.gs-location
+  storage_class = var.gs-storage-class
  # public_access_prevention = "enforced"
 }

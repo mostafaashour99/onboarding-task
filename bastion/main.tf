@@ -17,6 +17,9 @@ resource "google_compute_instance" "bastion" {
   network_interface {
     network = var.network_name
     subnetwork = var.subnet_name
+    access_config {
+      // Ephemeral IP
+    }
   }
 
   service_account {

@@ -14,3 +14,15 @@ variable "region" {
     type = string
     
 }
+variable "pod-range-secondary_ip_range-name" {
+    type = string
+}
+variable "pod-range-secondary_ip_range" {
+    type = string
+}
+variable "service-range-secondary_ip_range-name" {
+    type = string
+}
+variable "service-range-secondary_ip_range" {
+    type = string
+}

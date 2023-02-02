@@ -2,7 +2,6 @@ resource "google_compute_network" "main" {
   name                            =  var.network_name
   auto_create_subnetworks         = false
   routing_mode = "REGIONAL"
-
 }
 
 resource "google_compute_subnetwork" "private-subnet" {
@@ -10,15 +9,15 @@ resource "google_compute_subnetwork" "private-subnet" {
   ip_cidr_range            = var.subnet_cidr
   region                   = var.region
   network                  = google_compute_network.main.id
-  private_ip_google_access = true
+  private_ip_google_access = false
 
   secondary_ip_range {
-    range_name    = "k8s-pod-range"
-    ip_cidr_range = "10.48.0.0/14"
+    range_name    = var.pod-range-secondary_ip_range-name 
+    ip_cidr_range = var.pod-range-secondary_ip_range 
   }
   secondary_ip_range {
-    range_name    = "k8s-service-range"
-    ip_cidr_range = "10.52.0.0/20"
+    range_name    = var.service-range-secondary_ip_range-name
+    ip_cidr_range = var.service-range-secondary_ip_range
   }
 }
 

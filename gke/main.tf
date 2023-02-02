@@ -19,8 +19,8 @@ resource "google_container_cluster" "primary" {
   }
 
   ip_allocation_policy {
-    cluster_secondary_range_name  = "k8s-pod-range"
-    services_secondary_range_name = "k8s-service-range"
+    cluster_secondary_range_name  = var.pod-range-name
+    services_secondary_range_name = var.service-range-name
   }
 
     master_authorized_networks_config {
@@ -31,11 +31,8 @@ resource "google_container_cluster" "primary" {
   private_cluster_config {
     enable_private_nodes    = true
     enable_private_endpoint = true
-
     master_ipv4_cidr_block  = "172.16.0.0/28"
   }
 
-release_channel {
-	  channel = "STABLE"
-  }
+
 }

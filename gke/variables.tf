@@ -37,3 +37,10 @@ variable "node_type" {
 variable "node_locations" {
   type = list
 }
+
+variable "pod-range-name" {
+  type = string
+}
+variable "service-range-name" {
+  type = string
+}

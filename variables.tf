@@ -18,6 +18,18 @@ variable "region" {
     type = string
     
 }
+variable "pod-range-secondary_ip_range-name" {
+    type = string
+}
+variable "pod-range-secondary_ip_range" {
+    type = string
+}
+variable "service-range-secondary_ip_range-name" {
+    type = string
+}
+variable "service-range-secondary_ip_range" {
+    type = string
+}
 
 # --------vm--------------
 variable "vm-name" {
@@ -76,6 +88,6 @@ variable "node_locations" {
 }
 # -------------bigquery-----------
 
-variable "dataset_name" {
-  type = string
+variable "dataset_name_id" {
+  type = map
 }

@@ -3,5 +3,9 @@ variable "project_id" {
 }
 
 variable "dataset_name" {
-  type = string
+  type = map
+}
+
+variable "region" {
+  type= string
 }

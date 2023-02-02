@@ -1,8 +1,18 @@
+resource "google_service_account" "bqwriter" {
+  account_id = "bqwriter"
+}
+
+resource "google_project_iam_member" "bqwriter-iam" {
+  project = var.project_id
+  role    = "roles/bigquery.dataEditor"
+  member = "serviceAccount:${google_service_account.bqwriter.email}"
+}
+
 resource "google_bigquery_dataset" "dataset" {
-  dataset_id                  = "example_dataset"
-  friendly_name               = var.dataset_name
-  description                 = "This is a test description"
-  location                    = "US"
+  for_each = var.dataset_name
+  dataset_id                  = each.key
+  friendly_name               = each.value
+  location                    = var.region
   default_table_expiration_ms = 3600000
 
   # labels = {
@@ -24,12 +34,3 @@ resource "google_bigquery_dataset" "dataset" {
 #   account_id = "bqowner"
 # }
 
-resource "google_service_account" "bqwriter" {
-  account_id = "bqwriter"
-}
-
-resource "google_project_iam_member" "bqwriter-iam" {
-  project = var.project_id
-  role    = "roles/bigquery.dataEditor"
-  member = "serviceAccount:${google_service_account.bqwriter.email}"
-}

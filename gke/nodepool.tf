@@ -2,7 +2,7 @@ resource "google_service_account" "kubernetes" {
   account_id = "kubernetes"
 }
 
-resource "google_project_iam_member" "admin-account-iam" {
+resource "google_project_iam_member" "kubernetes-iam" {
   project = var.project_id
   role    = "roles/storage.objectViewer"
   member = "serviceAccount:${google_service_account.kubernetes.email}"
@@ -10,10 +10,9 @@ resource "google_project_iam_member" "admin-account-iam" {
 resource "google_container_node_pool" "general" {
   name       = "general"
   cluster    = google_container_cluster.primary.name
-  node_count = 2
+  node_count = 1
   location = google_container_cluster.primary.location
-  # node_locations = var.node_locations
-  node_locations = ["us-central1-a","us-central1-f"]
+  node_locations = var.node_locations
 
   management {
     auto_repair  = true
