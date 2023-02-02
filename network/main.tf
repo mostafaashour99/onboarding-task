@@ -9,7 +9,7 @@ resource "google_compute_subnetwork" "private-subnet" {
   ip_cidr_range            = var.subnet_cidr
   region                   = var.region
   network                  = google_compute_network.main.id
-  private_ip_google_access = false
+  private_ip_google_access = true
 
   secondary_ip_range {
     range_name    = var.pod-range-secondary_ip_range-name 
